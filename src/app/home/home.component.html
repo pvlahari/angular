@@ -1,0 +1,11 @@
+<div class="m-5 p-4 border border-muted">
+  <div class="d-flex justify-content-end">
+    <button type="button" class="btn btn-primary btn-lg mr-3">
+      <a [routerLink]="['user']" class="text-white text-decoration-none">My Profile</a>
+    </button>
+    <button type="button" class="btn btn-success btn-lg">
+      <a (click)="users()" class="text-white text-decoration-none">Users List</a>
+    </button>
+  </div>
+  <router-outlet></router-outlet>
+</div>

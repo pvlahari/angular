@@ -1,0 +1,23 @@
+
+<h4 class="text-center text-success">SignIn Form</h4>
+<div class="m-5 p-5 mx-auto col-md-10 border border-muted">
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <div class="form-row">
+      <div class="form-group col-md-12">
+        <label>Email</label>
+        <input type="email" class="form-control" placeholder="Email" formControlName="email" [ngClass]="{'is-invalid': (validation.email.touched || submitted) && (validation.email.errors?.required || validation.email.errors?.email)}">
+        <small style="color: red;" *ngIf="(validation.email.touched || submitted) && validation.email.errors?.required">Enter Email</small>
+        <small style="color: red;" *ngIf="(validation.email.touched || submitted) && validation.email.errors?.email">Enter valid Email</small>
+      </div>
+      <div class="form-group col-md-12">
+        <label>Password</label>
+        <input type="password" class="form-control" placeholder="Password" formControlName="password" [ngClass]="{'is-invalid': (validation.password.touched || submitted) && (validation.password.errors?.required || validation.password.errors?.minlength) }">
+        <small style="color: red;" *ngIf="(validation.password.touched || submitted) && validation.password.errors?.required">Enter Password</small>
+        <small style="color: red;" *ngIf="(validation.password.touched || submitted) && validation.password.errors?.minlength">Minimum 6 characters required!</small>
+      </div>
+    </div>
+    <div class="d-flex justify-content-end mt-3">
+      <button type="submit" class="btn btn-success" (click)="login()">Signin</button>
+    </div>
+  </form>
+</div>

@@ -8,16 +8,20 @@ import { environment } from '../../environments/environment';
 })
 export class HomeService {
 
-  url: any = 'https://jsonplaceholder.typicode.com/users';
+  //url: any = 'https://jsonplaceholder.typicode.com/users';
 
   constructor(private http: HttpClient) { }
 
   userslist(): Observable<any> {
-     return this.http.get(this.url);
+     return this.http.get(`${environment.baseApi}`);
+  }
+  
+  editUser(userid): Observable<any> {
+    return this.http.get(`${environment.baseApi}/edit/`+ userid);
   }
 
-  updateuserdata(updatedata : any): Observable<any> {
-    return this.http.post(this.url, updatedata);
+  updateuserdata(updatedata : any): Observable<any> {    
+    return this.http.post(`${environment.baseApi}/update/` + updatedata.id, updatedata);
   }
 
 }

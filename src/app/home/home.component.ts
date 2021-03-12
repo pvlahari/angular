@@ -9,17 +9,16 @@ import jwtDecode from 'jwt-decode';
 })
 export class HomeComponent implements OnInit {
 
-  token;
+  role: string;
 
   constructor(private router: Router) { }
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
 
   users() {
-    this.token = localStorage.getItem('token');
-    let details: any = jwtDecode(this.token);
-    if (details.role == 'admin') {
+    this.role = sessionStorage.getItem('role');
+    //let details: any = jwtDecode(this.token);
+    if (this.role == 'Admin') {
       alert('access granted!');
       this.router.navigate(['home/admin']);
     } else {

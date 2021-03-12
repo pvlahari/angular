@@ -3,29 +3,12 @@
   <form [formGroup]="reactiveForms" (ngSubmit)="onSubmit()">
     <div class="form-row">
       <div class="form-group col-md-6">
-        <label>First Name</label>
-        <input type="text" class="form-control" placeholder="First Name*" formControlName="firstName"
-          [ngClass]="{'is-invalid': (validation.firstName.touched || submitted) && validation.firstName.errors?.required}">
+        <label>Username</label>
+        <input type="text" class="form-control" placeholder="username*" formControlName="username"
+          [ngClass]="{'is-invalid': (validation.username.touched || submitted) && validation.username.errors?.required}">
         <small style="color: red;"
-          *ngIf="(validation.firstName.touched || submitted) && validation.firstName.errors?.required">Fill
-          FirstName</small>
-      </div>
-      <div class="form-group col-md-6">
-        <label>Last Name</label>
-        <input type="text" class="form-control" placeholder="Last Name*" formControlName="lastName"
-          [ngClass]="{ 'is-invalid': (validation.lastName.touched || submitted) && validation.lastName.errors?.required }">
-          <small style="color: red;"
-            *ngIf="(validation.lastName.touched || submitted) && validation.lastName.errors?.required">Fill
-            LastName</small>
-      </div>
-    </div>
-    <div class="form-row">
-      <div class="form-group col-md-6">
-        <label>Email</label>
-        <input type="email" class="form-control" placeholder="Email*" formControlName="email"
-          [ngClass]="{'is-invalid': (validation.email.touched || submitted) && validation.email.errors?.required }">
-        <small style="color: red;"
-          *ngIf="(validation.email.touched || submitted) && validation.email.errors?.required">Fill Email</small>
+          *ngIf="(validation.username.touched || submitted) && validation.username.errors?.required">Fill
+          username</small>
       </div>
       <div class="form-group col-md-6">
         <label>Password</label>
@@ -41,37 +24,38 @@
     </div>
     <div class="form-row">
       <div class="form-group col-md-4">
-        <label>Select State</label>
-        <select class="form-control" placeholder="choose" formControlName="state"
-          [ngClass]="{'is-invalid': (validation.state.touched || submitted) && validation.state.errors?.required}">
-          <option>Hyderabad</option>
-          <option>Chennai</option>
-          <option>Mumbai</option>
-          <option>Banglore</option>
-          <option>Pune</option>
-          <option>Delhi</option>
-        </select>
+        <label>Email</label>
+        <input type="email" class="form-control" placeholder="Email*" formControlName="email"
+          [ngClass]="{'is-invalid': (validation.email.touched || submitted) && validation.email.errors?.required }">
         <small style="color: red;"
-          *ngIf="(validation.state.touched || submitted) && validation.state.errors?.required">Select State</small>
+          *ngIf="(validation.email.touched || submitted) && validation.email.errors?.required">Fill Email</small>
       </div>
-      <div class="col-md-4">
-        <label>Mobile Number</label>
-        <input type="text" class="form-control" placeholder="Mobile Number" formControlName="mobile"
-          [ngClass]="{'is-invalid': (validation.mobile.touched || submitted) && validation.mobile.errors?.required}">
-        <small style="color: red;"
-          *ngIf="(validation.mobile.touched || submitted) && validation.mobile.errors?.required">Enter
-          MobileNumber</small>
-      </div>
-      <div class="col-md-4">
-        <label>Choose file</label>
-        <div class="custom-file">
-          <input type="file" (change)="ImageUpload($event)" class="custom-file-input" formControlName="photo"
-            [ngClass]="{'is-invalid': (validation.photo.touched || submitted) && validation.photo.errors?.required}">
+        <div class="form-group col-md-4">
+          <label>Select city</label>
+          <select class="form-control" placeholder="choose" formControlName="city"
+            [ngClass]="{'is-invalid': (validation.city.touched || submitted) && validation.city.errors?.required}">
+            <option value disabled selected>select city</option>
+            <option>Hyderabad</option>
+            <option>Chennai</option>
+            <option>Mumbai</option>
+            <option>Banglore</option>
+            <option>Pune</option>
+            <option>Delhi</option>
+          </select>
           <small style="color: red;"
-            *ngIf="(validation.photo.touched || submitted) && validation.photo.errors?.required">Choose Photo</small>
-          <label class="custom-file-label">Choose file</label>
+            *ngIf="(validation.city.touched || submitted) && validation.city.errors?.required">Select city</small>
         </div>
-      </div>
+        <div class="col-md-4">
+          <label>Select city</label>
+          <select class="form-control" placeholder="choose" formControlName="role"
+            [ngClass]="{'is-invalid': (validation.role.touched || submitted) && validation.role.errors?.required}">
+            <option value disabled selected>select role</option>
+            <option>Student</option>
+            <option>Admin</option>
+          </select>
+          <small style="color: red;"
+            *ngIf="(validation.role.touched || submitted) && validation.role.errors?.required">Select city</small>
+        </div>
     </div>
     <div class="d-flex justify-content-end mt-3">
       <button type="submit" class="btn btn-success" (click)="save()">Signup</button>

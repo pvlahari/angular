@@ -22,11 +22,11 @@
                     </div>
                 </div> 
                 <div class="form-group col-md-12">
-                    <label>Phno</label>
-                    <input type="text" class="form-control" placeholder="phno" name="phno" #phno="ngModel"
-                        [(ngModel)]="editForm.phno" required pattern="^[0-9]" [class.is-invalid]="(phno.invalid && phno.touched)">
-                        <div *ngIf="phno.errors && (phno.invalid && phno.touched)">
-                            <small style="color: red;" *ngIf="phno.errors.required">Enter phno</small>
+                    <label>city</label>
+                    <input type="text" class="form-control" placeholder="city" name="city" #city="ngModel"
+                        [(ngModel)]="editForm.city" required pattern="^[0-9]" [class.is-invalid]="(city.invalid && city.touched)">
+                        <div *ngIf="city.errors && (city.invalid && city.touched)">
+                            <small style="color: red;" *ngIf="city.errors.required">Enter city</small>
                         </div>
                 </div>
             </div>

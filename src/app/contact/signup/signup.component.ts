@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
+import { ContactService } from '../contact.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-signup',
@@ -8,11 +10,11 @@ import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 })
 export class SignupComponent implements OnInit {
 
-  reactiveForms : FormGroup;
+  reactiveForms: FormGroup;
   submitted = false;
   selectedFile;
 
-  constructor(private fb:FormBuilder) { }
+  constructor(private fb: FormBuilder, private user: ContactService, private router: Router) { }
 
   get validation() {
     return this.reactiveForms.controls;
@@ -20,18 +22,16 @@ export class SignupComponent implements OnInit {
 
   ngOnInit() {
     this.reactiveForms = this.fb.group({
-      firstName: ['', [Validators.required]],
-      lastName: ['', [Validators.required]],
-      email: ['', [Validators.required, Validators.email]],
+      username: ['', [Validators.required]],
       password: ['', [Validators.required, Validators.minLength(6)]],
-      state: ['', [Validators.required]],
-      mobile: ['', [Validators.required, Validators.minLength(14)]],
-      photo: ['', [Validators.required]],
+      email: ['', [Validators.required, Validators.email]],
+      city: ['', [Validators.required]],
+      role: ['', [Validators.required]],
     });
   }
 
   ImageUpload(event) {
-      this.selectedFile = event.target.files[0];
+    this.selectedFile = event.target.files[0];
   }
 
   onSubmit() {
@@ -43,15 +43,30 @@ export class SignupComponent implements OnInit {
 
   save() {
     let RegisteredDetails = {
-      firstName: this.reactiveForms.controls.firstName.value,
-      lastName: this.reactiveForms.controls.lastName.value,
-      email: this.reactiveForms.controls.email.value,
+      username: this.reactiveForms.controls.username.value,
       password: this.reactiveForms.controls.password.value,
-      state: this.reactiveForms.controls.state.value,
-      mobile: this.reactiveForms.controls.mobile.value,
-      photo: this.selectedFile.name
+      email: this.reactiveForms.controls.email.value,
+      city: this.reactiveForms.controls.city.value,
+      role: this.reactiveForms.controls.role.value,
     }
-    RegisteredDetails;
+    if (this.reactiveForms.invalid) {
+      return;
+    } else {
+      this.user.signupVerify(RegisteredDetails).subscribe(res => {
+        
+        let loginData = {
+          email: RegisteredDetails.email,
+          password: RegisteredDetails.password
+        }
+
+        this.user.loginVerify(loginData).subscribe((data: any) => {
+          this.user.setUserSession(data);
+          this.router.navigate(['home/user']);
+          window.location.reload();
+        });
+
+      });
+    }
   }
 
 }

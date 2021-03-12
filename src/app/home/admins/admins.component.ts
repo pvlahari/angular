@@ -12,10 +12,10 @@ import { HomeService } from '../home.service';
 
 export class AdminsComponent implements OnInit {
 
+  city: any;
+  email: any;
   userslist: any;
-  address: any;
-  company: any;
-  name: any;
+  username: any;
   date: any = new Date();
   month: any = new Date();
   year: any = new Date();
@@ -26,7 +26,6 @@ export class AdminsComponent implements OnInit {
 
   ngOnInit() {
     this.users.userslist().subscribe((data: any) => {
-      //console.log(data.httpOptions_headers)
       if (data.status == 200) {
         alert('success!');
       }
@@ -47,13 +46,14 @@ export class AdminsComponent implements OnInit {
   }
 
   details(user) {
-    this.name = user.name;
-    this.address = user.address;
-    this.company = user.company;
+    this.username = user.username;
+    this.email = user.email;
+    this.city = user.city;
   }
 
   edituser(user) {
-    this.router.navigate(['home/edituser/', user.id], { queryParams: { username: user.username, email: user.email, phno: user.phone }, queryParamsHandling: 'merge' });
+     //this.router.navigate(['home/edituser/', user._id], { queryParams: { id: user._id, username: user.username, email: user.email, city: user.city }, queryParamsHandling: 'merge' });
+    this.router.navigate(['home/edituser/', user._id], { queryParams: { id: user._id }});
   }
 
 }

@@ -14,7 +14,7 @@ export class SigninComponent implements OnInit {
   loginForm: FormGroup;
   submitted = false;
 
-  constructor(private fb: FormBuilder, private loginuser: ContactService, private router:Router) { }
+  constructor(private fb: FormBuilder, private loginuser: ContactService, private router: Router) { }
 
   get validation() {
     return this.loginForm.controls;
@@ -28,22 +28,16 @@ export class SigninComponent implements OnInit {
   }
 
   login() {
-    if (this.loginForm.invalid) {
-      return;
-    } else {
       let loginDetails = {
         email: this.loginForm.controls.email.value,
         password: this.loginForm.controls.password.value
       }
       this.loginuser.loginVerify(loginDetails).subscribe((data: any) => {
-        if (data.token) {
-          localStorage.setItem('token', data.token);
-          this.router.navigate(['/home/user']);
+          this.loginuser.setUserSession(data);
+          this.router.navigate(['home/user']);
           window.location.reload();
-        }
       });
     }
-  }
 
   onSubmit() {
     this.submitted = true;

@@ -15,7 +15,11 @@ export class AdminsComponent implements OnInit {
   city: any;
   email: any;
   userslist: any;
+<<<<<<< HEAD
   username: any;
+=======
+  user: any;
+>>>>>>> new changes
   date: any = new Date();
   month: any = new Date();
   year: any = new Date();
@@ -27,9 +31,9 @@ export class AdminsComponent implements OnInit {
   ngOnInit() {
     this.users.userslist().subscribe((data: any) => {
       if (data.status == 200) {
-        alert('success!');
+        console.log(data);
+        this.userslist = data.body;
       }
-      this.userslist = data;
     });
     this.date = this.datepipe.transform(this.date, 'dd'); //current date
     this.month = this.datepipe.transform(this.month, 'MMM'); //current month
@@ -46,9 +50,13 @@ export class AdminsComponent implements OnInit {
   }
 
   details(user) {
+<<<<<<< HEAD
     this.username = user.username;
     this.email = user.email;
     this.city = user.city;
+=======
+    this.user = user;
+>>>>>>> new changes
   }
 
   edituser(user) {

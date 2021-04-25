@@ -20,7 +20,12 @@ export class ContactService {
     return this.http.post(`${environment.baseApi}/register`, userDetails);
   }
 
+  register(userdetails: any): Observable<any> {
+    return this.http.post(`${environment.baseApi}/register`, userdetails, { observe: 'response' });
+  }
+
   loginVerify(loginDetails: any): Observable<any> {
+<<<<<<< HEAD
     return this.http.post(`${environment.baseApi}/login`, loginDetails, {headers: this.reqHeader, responseType: 'json'});
   }
 
@@ -30,6 +35,9 @@ export class ContactService {
       window.sessionStorage.setItem('role', loginObj.role);
       localStorage.setItem("user_details", JSON.stringify(loginObj));
       localStorage.setItem("token", loginObj.token);
+=======
+    return this.http.post(`${environment.baseApi}/login`, loginDetails, { observe: 'response' });
+>>>>>>> new changes
   }
 
 }

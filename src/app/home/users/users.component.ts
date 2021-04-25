@@ -19,17 +19,19 @@ export class UsersComponent implements OnInit {
 
   userslist() {
     this.home.userslist().subscribe(data => {
-      for (let i=0; i<=data.length; i++) {
-        this.list = data;     
+      if (data.status == 200) {
+        for (let i = 0; i <= data.body.length; i++) {
+          this.list = data.body;
+        }
+        this.list.forEach((tag, i) => {
+          this.name.push(this.list[i].username);
+        });
       }
-      this.list.forEach((tag, i) => {
-         this.name.push(this.list[i].username);
-      });
     });
   }
 
   ngOnInit() {
-    
+
     this.userslist();
 
     // this.home.userslist().subscribe((res) => {
@@ -67,7 +69,7 @@ export class UsersComponent implements OnInit {
           {
             type: 'bar',
             label: 'My Second dataset',
-            data:  [1, 22, 13, 4, 5, 6, 7, 28, 9].reverse(),
+            data: [1, 22, 13, 4, 5, 6, 7, 28, 9].reverse(),
             backgroundColor: 'rgba(0,0,255,0.4)',
             borderColor: 'rgba(0,0,255,0.4)',
             fill: false,

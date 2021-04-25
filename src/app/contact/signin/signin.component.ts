@@ -33,8 +33,14 @@ export class SigninComponent implements OnInit {
         password: this.loginForm.controls.password.value
       }
       this.loginuser.loginVerify(loginDetails).subscribe((data: any) => {
+<<<<<<< HEAD
           this.loginuser.setUserSession(data);
           this.router.navigate(['home/user']);
+=======
+        if (data.body.token) {
+          localStorage.setItem('token', data.body.token);
+          this.router.navigate(['/home/user']);
+>>>>>>> new changes
           window.location.reload();
       });
     }

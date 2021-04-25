@@ -4,21 +4,25 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 @Injectable({
   providedIn: 'root'
 })
+
 export class HttpClientService {
+
+  userToken = localStorage.getItem("token");
+  //userToken = "userToken";
 
   constructor(private http: HttpClient) { }
 
-  //userToken = localStorage.getItem("userToken");
-  userToken = "userToken";
-
-  get(url){
+  get(url) {
     return this.http.get(url, {
-      headers : {Authorization : this.userToken}
+      headers : {Authorization : this.userToken},
+      observe: 'response'
     });
   }
 
-  post(url, data){
+  post(url, data) {
     return this.http.post(url, data, {
-      headers : {Authorization : this.userToken}});
+      headers : {Authorization : this.userToken},
+      observe: 'response'
+    })
   }
 }

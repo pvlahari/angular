@@ -15,7 +15,7 @@ export class EdituserComponent implements OnInit {
     email: '',
     city: ''
   };
-  
+
   userid;
   updatedForm: FormData;
 
@@ -28,9 +28,9 @@ export class EdituserComponent implements OnInit {
     });
 
     this.updatedata.editUser(this.userid).subscribe(data => {
-      this.editForm.username = data.username;
-      this.editForm.email = data.email;
-      this.editForm.city = data.city;
+        this.editForm.username = data.username;
+        this.editForm.email = data.email;
+        this.editForm.city = data.city;
     });
 
   }
@@ -46,9 +46,9 @@ export class EdituserComponent implements OnInit {
       email: editForm.email,
       city: editForm.city
     };
-    
+
     this.updatedata.updateuserdata(updatedForm).subscribe(res => {
-      alert('updated user successfully!');      
+      alert('updated user successfully!');
       this.r.navigate(['home/admin']);
     });
   }

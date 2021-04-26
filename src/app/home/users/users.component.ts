@@ -19,14 +19,12 @@ export class UsersComponent implements OnInit {
 
   userslist() {
     this.home.userslist().subscribe(data => {
-      if (data.status == 200) {
-        for (let i = 0; i <= data.body.length; i++) {
-          this.list = data.body;
-        }
-        this.list.forEach((tag, i) => {
-          this.name.push(this.list[i].username);
-        });
+      for (let i = 0; i <= data.length; i++) {
+        this.list = data;
       }
+      this.list.forEach((tag, i) => {
+        this.name.push(this.list[i].username);
+      });
     });
   }
 

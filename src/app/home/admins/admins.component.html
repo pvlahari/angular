@@ -5,10 +5,7 @@
     <table class="table mx-auto table-striped table-dark table-bordered my-3 mx-5 px-5">
         <thead>
           <tr>
-<<<<<<< HEAD
-=======
             <th scope="col">Sno</th>
->>>>>>> new changes
             <th scope="col">userName</th>
             <th scope="col">Email</th>
             <th scope="col" colspan="2">city</th>
@@ -17,12 +14,8 @@
         </thead>
         <tbody *ngFor="let user of userslist; let i = index">
           <tr>
-<<<<<<< HEAD
-            <th scope="row">{{user.username}}</th>
-=======
             <th scope="row">{{i+1}}</th>
             <td>{{user.username}}</td>
->>>>>>> new changes
             <td>{{user.email}}</td>
             <td>{{user.city}}</td>
             <td><button class="btn btn-warning" (click)="details(user)" data-toggle="modal" data-target="#exampleModalCenter">Details</button></td>
@@ -40,22 +33,12 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header">
-<<<<<<< HEAD
-          <h5 class="modal-title" id="exampleModalCenterTitle">{{username}}</h5>
-=======
           <h5 class="modal-title" id="exampleModalCenterTitle">Details of <span class="text-primary">{{user.username}}</span></h5>
->>>>>>> new changes
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
         <div class="modal-body">
-<<<<<<< HEAD
-          <h6 class="text-danger"><b>User Details</b></h6>
-          <p><small><b>{{username}}</b></small></p>
-          <h6 class="text-success"><b>Address</b></h6>
-          <p><small><b>{{city}}</b></small></p>
-=======
           <div class="d-flex justify-content-between px-3">
             <p class="text-danger">City</p>
             <p>{{user.city}}</p>
@@ -68,7 +51,6 @@
             <p class="text-danger">Role</p>
             <p>{{user.role}}</p>
           </div>
->>>>>>> new changes
         </div>
       </div>
     </div>

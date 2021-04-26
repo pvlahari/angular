@@ -1,5 +1,4 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-error-dialog',
@@ -8,7 +7,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 })
 export class ErrorDialogComponent implements OnInit {
 
-  constructor(@Inject(NgbModal) public data: string) { }
+  constructor() { }
 
   ngOnInit() {
   }

@@ -22,7 +22,6 @@
     "@angular/router": "~8.2.11",
     "@chenfengyuan/datepicker": "^1.0.9",
     "@mapbox/mapbox-gl-draw": "^1.1.2",
-    "@ng-bootstrap/ng-bootstrap": "^9.1.0",
     "@ng-select/ng-select": "^3.7.0",
     "@turf/turf": "^5.1.6",
     "angular-mydatepicker": "^0.3.4",

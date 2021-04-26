@@ -15,11 +15,7 @@ export class AdminsComponent implements OnInit {
   city: any;
   email: any;
   userslist: any;
-<<<<<<< HEAD
-  username: any;
-=======
   user: any;
->>>>>>> new changes
   date: any = new Date();
   month: any = new Date();
   year: any = new Date();
@@ -29,11 +25,9 @@ export class AdminsComponent implements OnInit {
   constructor(private users: HomeService, private router: Router, private datepipe: DatePipe) { }
 
   ngOnInit() {
-    this.users.userslist().subscribe((data: any) => {
-      if (data.status == 200) {
-        console.log(data);
-        this.userslist = data.body;
-      }
+    this.users.userslist().subscribe(data => {
+      console.log(data);
+      this.userslist = data
     });
     this.date = this.datepipe.transform(this.date, 'dd'); //current date
     this.month = this.datepipe.transform(this.month, 'MMM'); //current month
@@ -50,18 +44,12 @@ export class AdminsComponent implements OnInit {
   }
 
   details(user) {
-<<<<<<< HEAD
-    this.username = user.username;
-    this.email = user.email;
-    this.city = user.city;
-=======
     this.user = user;
->>>>>>> new changes
   }
 
   edituser(user) {
-     //this.router.navigate(['home/edituser/', user._id], { queryParams: { id: user._id, username: user.username, email: user.email, city: user.city }, queryParamsHandling: 'merge' });
-    this.router.navigate(['home/edituser/', user._id], { queryParams: { id: user._id }});
+    //this.router.navigate(['home/edituser/', user._id], { queryParams: { id: user._id, username: user.username, email: user.email, city: user.city }, queryParamsHandling: 'merge' });
+    this.router.navigate(['home/edituser/', user._id], { queryParams: { id: user._id } });
   }
 
 }

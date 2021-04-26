@@ -2,13 +2,13 @@ import { Injectable } from '@angular/core';
 import { HttpInterceptor, HttpRequest, HttpResponse, HttpHandler, HttpEvent, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
-//import { ErrorHandlingService } from './error-handling.service'
+import { ErrorDialogService } from './error-dialog.service';
 
 @Injectable()
 
 export class HttpInterceptorsService implements HttpInterceptor {
 
-  //constructor(public error: ErrorHandlingService) { }
+  constructor(public error: ErrorDialogService) { }
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
@@ -37,7 +37,7 @@ export class HttpInterceptorsService implements HttpInterceptor {
           reason: error && error.error && error.error.reason ? error.error.reason : '',
           status: error.status
         };
-        //this.error.openDialog(data);
+        this.error.openDialog(data);
         return throwError(error);
       })
     );

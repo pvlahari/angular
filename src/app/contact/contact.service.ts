@@ -11,10 +11,6 @@ export class ContactService {
   
   constructor(private http: HttpClient) { }
 
-  signupVerify(userDetails: any): Observable<any> {
-    return this.http.post(`${environment.baseApi}/register`, userDetails);
-  }
-
   register(userdetails: any): Observable<any> {
     return this.http.post(`${environment.baseApi}/register`, userdetails);
   }

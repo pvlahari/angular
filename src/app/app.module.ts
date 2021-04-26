@@ -13,6 +13,8 @@ import { HomeModule } from './home/home.module';
   
 import { HttpInterceptorsService } from './services/http-interceptors.service';
 import { ErrorDialogComponent } from './error-dialog/error-dialog.component';
+import { ErrorDialogService } from './services/error-dialog.service';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -28,11 +30,13 @@ import { ErrorDialogComponent } from './error-dialog/error-dialog.component';
     AppRoutingModule,
     ContactModule,
     HomeModule,
-    HttpClientModule
+    HttpClientModule,
+    MatDialogModule
   ],
   providers: [
-    AuthenticationGuard,   
-    { provide: HTTP_INTERCEPTORS, useClass: HttpInterceptorsService, multi: true }
+    AuthenticationGuard,  
+    { provide: HTTP_INTERCEPTORS, useClass: HttpInterceptorsService, multi: true },
+    ErrorDialogService, 
   ],
   entryComponents: [
     ErrorDialogComponent

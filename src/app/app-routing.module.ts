@@ -10,12 +10,12 @@ const routes: Routes = [
   { path: 'home/', canActivate:[AuthenticationGuard], component: HomeComponent },
   { path: 'contact', component: ContactComponent },
   { path: 'logout', component: LogoutComponent },
-  { path: 'contactmodule', loadChildren: './contact/contact.module#ContactModule' },
-  { path: 'homemodule', loadChildren: './home/home.module#HomeModule' },
+  { path: 'contactmodule', loadChildren: () => import('./contact/contact.module').then(m => m.ContactModule) },
+  { path: 'homemodule', loadChildren: () => import('./home/home.module').then(m => m.HomeModule) },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, { relativeLinkResolution: 'legacy' })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

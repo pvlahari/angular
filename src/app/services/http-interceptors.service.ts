@@ -8,7 +8,7 @@ import { ErrorDialogService } from './error-dialog.service';
 
 export class HttpInterceptorsService implements HttpInterceptor {
 
-  constructor(public error: ErrorDialogService) { }
+  constructor(public errorHandling: ErrorDialogService) { }
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
@@ -32,12 +32,11 @@ export class HttpInterceptorsService implements HttpInterceptor {
         return event;
       }),
       catchError((error: HttpErrorResponse) => {
-        let data = {};
-        data = {
+        let data = {
           reason: error && error.error && error.error.reason ? error.error.reason : '',
           status: error.status
         };
-        this.error.openDialog(data);
+        this.errorHandling.openDialog(data);
         return throwError(error);
       })
     );

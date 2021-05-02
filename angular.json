@@ -1,5 +1,8 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "cli": {
+    "analytics": "ecde3d42-21b0-4539-8b1e-f79c8c26be92"
+  },
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
@@ -26,7 +29,7 @@
               "src/styles.css"
             ],
             "scripts": [],
-            "es5BrowserSupport": true
+            "aot": true
           },
           "configurations": {
             "production": {
@@ -39,9 +42,7 @@
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
-              "extractCss": true,
               "namedChunks": false,
-              "aot": true,
               "extractLicenses": true,
               "vendorChunk": false,
               "buildOptimizer": true,
@@ -50,6 +51,10 @@
                   "type": "initial",
                   "maximumWarning": "2mb",
                   "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb"
                 }
               ]
             }
